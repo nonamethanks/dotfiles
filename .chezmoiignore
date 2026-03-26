@@ -1,0 +1,15 @@
+// Never applied
+install.sh
+
+{{ if eq .chezmoi.os "linux" }}
+
+// Exclude files only for Windows
+
+{{ else }}
+
+// Exclude files only for Linux
+
+dot_zsh_aliases
+dot_zshrc
+
+{{ end }}

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+alias ls="ls --color=auto -a --classify --group-directories-first"
+alias ll="ls --color=auto -lha --classify --group-directories-first"
+alias fixup="git rebase -i HEAD~10 --autostash"
+alias zshreload="omz reload"
+# shellcheck disable=SC2139
+alias killvscode="ps -e | grep ' code-' | awk '{print $1}' | xargs -r kill"
+alias telnet="telnet -e '^['" # i fucking hate telnet
