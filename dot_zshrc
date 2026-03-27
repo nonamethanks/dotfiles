@@ -100,8 +100,7 @@ export LC_COLLATE="C" # sort dotfiles first
 path+="$HOME/bin"
 path+="$HOME/.local/bin"
 
-
-if command -v mise; then
+if command -v mise >/dev/null; then
   eval "$(mise activate zsh)"
 fi
 
