@@ -105,10 +105,15 @@ path+="$NPM_PACKAGES/bin"
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 path+="$PYENV_ROOT/bin"
-eval "$(pyenv init - bash)"
+
+if command -v pyenv; then
+  eval "$(pyenv init - bash)"
+fi
 
 # rbenv
-eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
+if [[ -f ~/.rbenv/bin/rbenv ]]; then
+  eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
+fi
 
 # npm
 export NPM_PACKAGES="$HOME/.npm-packages"
