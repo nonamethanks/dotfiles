@@ -98,19 +98,12 @@ export IP_ADDRESS
 export LC_COLLATE="C" # sort dotfiles first
 
 path+="$HOME/bin"
-path+="$HOME/.local/bin" # for poetry
-path+="$NPM_PACKAGES/bin"
+path+="$HOME/.local/bin"
 
-# npm
-export NPM_PACKAGES="$HOME/.npm-packages"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
-# pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
-path+="$PNPM_HOME"
-
-unset MANPATH # delete if you already modified MANPATH elsewhere in your config
-MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+if command -v mise; then
+  eval "$(mise activate zsh)"
+fi
 
 source ~/.zsh_aliases
 
