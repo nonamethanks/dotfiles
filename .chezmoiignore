@@ -4,11 +4,13 @@ install.sh
 {{ if eq .chezmoi.os "linux" }}
 
 // Exclude files only for Windows
+scoop/
 
 {{ else }}
 
 // Exclude files only for Linux
 
+.gnupg
 .zsh_aliases
 .zshrc
 .ansible.cfg
