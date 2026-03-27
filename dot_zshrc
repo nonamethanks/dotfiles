@@ -101,20 +101,6 @@ path+="$HOME/bin"
 path+="$HOME/.local/bin" # for poetry
 path+="$NPM_PACKAGES/bin"
 
-## Language Packages
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-path+="$PYENV_ROOT/bin"
-
-if command -v pyenv; then
-  eval "$(pyenv init - bash)"
-fi
-
-# rbenv
-if [[ -f ~/.rbenv/bin/rbenv ]]; then
-  eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
-fi
-
 # npm
 export NPM_PACKAGES="$HOME/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
