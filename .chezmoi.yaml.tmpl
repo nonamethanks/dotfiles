@@ -19,12 +19,38 @@
 {{-   $email = promptString "email" $email -}}
 {{- end -}}
 
+
+{{- $signingKey := "" -}}
+{{- if hasKey . "signingKey" -}}
+{{-   $signingKey = .signingKey -}}
+{{- else if $interactive -}}
+{{-   if ne $email "" -}}
+{{-     $keyOutput := output "gpg" "--list-secret-keys" "--keyid-format=long" $email -}}
+{{-     $lines := splitList "\n" $keyOutput -}}
+{{-     range $lines -}}
+{{-       if hasPrefix "sec" . -}}
+{{-         $parts := splitList "/" . -}}
+{{-         if gt (len $parts) 1 -}}
+{{-           $keyWithDate := index $parts 1 -}}
+{{-           $signingKey = first (splitList " " $keyWithDate) -}}
+{{-         end -}}
+{{-       end -}}
+{{-     end -}}
+{{-   end -}}
+{{-   if ne $signingKey "" -}}
+{{-     writeToStdout (printf "💡 Found GPG key for %s: %s\n" $email $signingKey) -}}
+{{-   end -}}
+{{-   $signingKey = promptString "signingKey" $signingKey -}}
+{{- end -}}
+
+
 {{- if $interactive -}}
-{{-   writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
+{{-   writeToStdout "💡 Tip: you can re-enter your name, email and signingKey with `chezmoi init --data=false`.\n" -}}
 {{- end -}}
 
 sourceDir: {{ .chezmoi.sourceDir | quote }}
 
 data:
-  name: {{ $name | quote }}
-  email: {{ $email | quote }}
+  name: {{ $name | trim | quote }}
+  email: {{ $email | trim | quote }}
+  signingKey: {{ $signingKey | trim | quote }}

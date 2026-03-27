@@ -1,0 +1,19 @@
+[user]
+    name = {{ .name }}
+    email = {{ .email }}
+    signingkey = {{ .signingKey }}
+[core]
+    editor = code --wait
+    pager = less -F -X
+[credential]
+    helper = store
+[push]
+    autoSetupRemote = true
+[commit]
+    gpgsign = true
+[tag]
+    gpgSign = true
+[init]
+	defaultBranch = master
+[gpg]
+	program = gpg
