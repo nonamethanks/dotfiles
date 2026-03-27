@@ -9,7 +9,8 @@ install.sh
 
 // Exclude files only for Linux
 
-dot_zsh_aliases
-dot_zshrc
+.zsh_aliases
+.zshrc
+.ansible.cfg
 
 {{ end }}
