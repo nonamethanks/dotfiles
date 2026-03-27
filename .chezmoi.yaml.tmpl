@@ -25,15 +25,18 @@
 {{-   $signingKey = .signingKey -}}
 {{- else if $interactive -}}
 {{-   if ne $email "" -}}
-{{-     $keyOutput := output "gpg" "--list-secret-keys" "--keyid-format=long" $email -}}
+{{-     $keyOutput := output "gpg" "--list-secret-keys" "--keyid-format=long" -}}
 {{-     $lines := splitList "\n" $keyOutput -}}
+{{-     $currentKey := "" -}}
 {{-     range $lines -}}
 {{-       if hasPrefix "sec" . -}}
 {{-         $parts := splitList "/" . -}}
 {{-         if gt (len $parts) 1 -}}
 {{-           $keyWithDate := index $parts 1 -}}
-{{-           $signingKey = first (splitList " " $keyWithDate) -}}
+{{-           $currentKey = first (splitList " " $keyWithDate) -}}
 {{-         end -}}
+{{-       else if contains $email . -}}
+{{-         $signingKey = $currentKey -}}
 {{-       end -}}
 {{-     end -}}
 {{-   end -}}
