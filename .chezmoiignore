@@ -1,5 +1,6 @@
 // Never applied
 install.sh
+Readme.md
 
 {{ if eq .chezmoi.os "linux" }}
 
