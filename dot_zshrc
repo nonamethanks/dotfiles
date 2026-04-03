@@ -97,6 +97,9 @@ export IP_ADDRESS
 
 export LC_COLLATE="C" # sort dotfiles first
 
+# shellcheck disable=SC2155
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket) # for ssh auth
+
 path+="$HOME/bin"
 path+="$HOME/.local/bin"
 
