@@ -1,0 +1,16 @@
+[tools]
+chezmoi = "latest"
+python = "3.14"
+shellcheck = "latest"
+shfmt = "latest"
+uv = "latest"
+ansible = "latest"
+pipx = "latest"
+sqlite = "3.52"
+gh = "latest"
+
+[prepare.uv]
+depends = ["python"]
+
+[prepare.ansible]
+depends = ["pipx"]
