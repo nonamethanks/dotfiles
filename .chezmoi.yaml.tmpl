@@ -47,9 +47,9 @@
 {{- end -}}
 
 
-{{- if $interactive -}}
-{{-   writeToStdout "💡 Tip: you can re-enter your name, email and signingKey with `chezmoi init --data=false`.\n" -}}
-{{- end -}}
+# {{- if $interactive -}}
+# {{-   writeToStdout "💡 Tip: you can re-enter your name, email and signingKey with `chezmoi init --data=false`.\n" -}}
+# {{- end }}
 
 sourceDir: {{ .chezmoi.sourceDir | quote }}
 
@@ -57,3 +57,9 @@ data:
   name: {{ $name | trim | quote }}
   email: {{ $email | trim | quote }}
   signingKey: {{ $signingKey | trim | quote }}
+
+merge:
+  command: "bash"
+  args:
+    - "-c"
+    - "cp {{ `{{ .Target }}` }} {{ `{{ .Target }}` }}.base && code --wait --merge {{ `{{ .Destination }}` }} {{ `{{ .Target  }}` }} {{ `{{ .Target }}` }}.base {{ `{{ .Source }}` }}"

@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "**/.chezmoi*/**/*": "jinja",
-        ".chezmoi*": "go",
-        "*.tmpl": "go",
-    },
-}

@@ -1,19 +1,21 @@
-// Never applied
+// NEVER APPLIED
 install.sh
 Readme.md
 
 {{ if eq .chezmoi.os "linux" }}
+// FILES ONLY FOR WINDOWS
 
-// Exclude files only for Windows
-scoop/
-
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+// FILES FOR NORMAL LINUX BUT NOT WSL
+{{ else }}
+// FILES FOR WSL BUT NOT NORMAL LINUX
+{{ end }}
 {{ else }}
 
-// Exclude files only for Linux
+// FILES ONLY FOR EVERY LINUX TYPE
 
 .gnupg
 .zsh_aliases
 .zshrc
-.ansible.cfg
 
 {{ end }}

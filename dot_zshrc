@@ -14,7 +14,7 @@ ZSH_THEME="robbyrussell"
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
-zstyle ':omz:update' mode disabled  # disable automatic updates
+zstyle ':omz:update' mode disabled # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Uncomment the following line to change how often to auto-update (in days).
@@ -81,13 +81,13 @@ source "$ZSH/oh-my-zsh.sh"
 
 HISTSIZE=10000000
 SAVEHIST=10000000
-setopt BANG_HIST                 # Treat the '!' character specially during expansion.
-setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
-setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
-setopt SHARE_HISTORY             # Share history between all sessions.
-setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
-setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
-setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt BANG_HIST          # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY   # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY      # Share history between all sessions.
+setopt HIST_FIND_NO_DUPS  # Do not display a line previously found.
+setopt HIST_REDUCE_BLANKS # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY        # Don't execute immediately upon history expansion.
 
 TIMEZONE=$(timedatectl show | grep Timezone= | awk -F= '{print $2}')
 export TIMEZONE
@@ -101,17 +101,17 @@ path+="$HOME/bin"
 path+="$HOME/.local/bin"
 
 if command -v mise >/dev/null; then
-  eval "$(mise activate zsh)"
+    eval "$(mise activate zsh)"
 fi
 
 source ~/.zsh_aliases
 
 # update zsh on chezmoi apply
 chezmoi() {
-  command chezmoi "$@"
-  if [[ "$1" == "apply" ]]; then
-    omz reload
-  fi
+    command chezmoi "$@"
+    if [[ "$1" == "apply" ]]; then
+        omz reload
+    fi
 }
 
 # PROMPT

@@ -1,1 +1,6 @@
-disable=SC1091 # don't bother following files
+enable=all
+
+external-sources=true
+
+disable=SC2312 # Consider invoking this command separately to avoid masking its return value (or use '|| true' to ignore)
+disable=SC2250 # Prefer putting braces around variable references even when not strictly required.
